@@ -1,0 +1,8 @@
+计算机硬件
+操作系统
+程序
+python的multiprocessing
+python的threading
+计算密集型和io密集型
+计算密集型：计算（加减乘除），视频解码，频繁的在摸个大的序列中查找某个元素。
+io密集型：网络，磁盘读写。
