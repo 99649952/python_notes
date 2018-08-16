@@ -1,6 +1,8 @@
 计算机硬件
 操作系统
 程序
+同步、异步、阻塞、非阻塞
+io多路复用
 python的multiprocessing
 python的threading
 计算密集型和io密集型

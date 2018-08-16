@@ -1,0 +1,64 @@
+int（整形）:
+1,2,-100
+计算
+17 / 3
+17 / 3.0
+17 // 3
+17 % 3
+5 * 3 + 2
+5 ** 2
+
+变量,存储数据
+变量名必须是大小写英文、数字和_的组合，且不能用数字开头。
+width = 20
+height = 5 * 9
+width * height
+
+float（浮点型）:
+3.14, 100.20, 6.1235
+
+str（字符串）:
+单引号
+'abc', 'Are you ok.', '你好'
+
+双引号
+'I don\'t like python'
+"I don’t like python"
+'C:\some\name'
+
+三引号''' '''or """ """
+"""name: sven
+age: 18
+height: 178
+"""
+'name: sven\nage: 18\nheight: 178\n'
+r'C:\some\name'	#带r的字符串为原始字符串
+
+字符串格式化
+name = 'sven'
+age = '18'
+height = '178.5'
+info = 'name: %s' % name
+info = 'name: %s\nage: %s\nheight: %s' % (name, age, height)
+info = 'name: {0}\nage: {1}\nheight: {2}'.format(name, age, height)
+info = 'name: {name}\nage: {age}\nheight: {height}'.format(name=name, age=age, height=height)	# 推荐
+info = f'name: {name}\nage: {age}\nheight: {height}' # 推荐
+info = 'sven' + "\n" + '19'
+
+字符串编码
+ASCII   # 表示英文字母，数字，符号等。
+Unicode     # 能表示世界上大多数语言。
+utf-8   # 对Unicode优化，省一些空间。
+
+bool（布尔类型）
+True, False
+布尔值可以用and、or和not运算。
+True and True --> True
+True and False --> False
+False and True --> False
+True or False --> True
+False or True --> True
+not True --> False
+not False --> True
+
+None # 代表空值，通常用作占位

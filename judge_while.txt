@@ -1,0 +1,64 @@
+循环判断
+
+if语句：
+用于条件判断，如果条件为真（True），那么执行该语句块的内容。
+data = []
+if data:
+  print('list is not empty')
+python的大多数对象都可以看作bool值。其中空字符串'', [], None, 0, (), {}等为False,其它的大多为True，根据这个特性可以判断对象是否为空。
+
+# 当if语句块条件为假（False），会继续判断elif语句块的内容。
+if 2 > 3:
+    print(2)
+elif 3 > 2:
+    print(3)
+
+# 当if，elif语句块条件都为假是执行else语句。
+data = [1,2,3]
+if 4 in data: # 判断一个元素在不在列表、字符串、字典中，用in。
+    print('4 in data')
+elif 3 not in data:
+    data.append(3)
+else:
+    print('data is complete')
+
+for语句：
+for语句用于迭代一个序列的元素（例如字符串、元组或者列表）或者其它可迭代的对象（字典）
+[1,2,3]
+for i in data: # 直接用for循环遍历列表
+    print(i)
+
+while语句
+当表达式为真是将一直执行，长于用死循环
+age = 0
+while age < 5:
+    age += 1  # 等同于age = age + 1
+    print(age)
+
+语句的嵌套：
+models = [
+    {'name': 'Lisa', 'age': 18, 'height': 176, 'bust': 83, 'waist': 62, 'hip': 90, 'cup': '35D'},
+    {'name': 'Cristal', 'age': 25, 'height': 174, 'bust': 73, 'waist': 60, 'hip': 81, 'cup': '32C'},
+    {'name': 'Rose', 'age': 24, 'height': 180, 'bust': 80, 'waist': 60, 'hip': 85, 'cup': '36F'}]
+good_girl = []
+
+# 布尔值可以用and、or和not运算。
+# break和continue同样可用于while循环。
+for i in models:
+    if i['height'] > 175 and i['age'] < 20 and 'D' in i['cup']:
+        print('I really like her.')
+        break
+    elif i['height'] > 175 or '36F' in i['cup']:
+        print("It's ok!")
+        good_girl.append(i)
+    elif 'D' in i['cup']:
+        print('just so so!')
+        continue # continue代表跳出本次循环，不执行continue之后的语句块。
+    else:
+        print("It's terrible")
+    print("I'm so tired!!!")
+
+列表生成式
+nums = [n for n in range(20)]
+nums = [n for n in range(20) if n % 5 == 0]
+nums = [str(n) for n in range(20) if n % 5 == 0]

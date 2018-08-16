@@ -1,0 +1,52 @@
+list（列表）：
+列表可以包含不同类型的元素，但是通常所有的元素都具有相同的类型。
+data = [1,2,3]
+data[0]
+data.append(1)
+data.insert(3,10)
+data.pop()
+del data[0]
+
+tuple（元组）：
+data = (1,2,3)
+data[0]
+
+dict（字典）：
+model = {'bust': '86',
+         'waist': '62',
+         'hip': '90'}
+model['height'] = 176
+model['height']
+model.keys()
+model.values()
+model.items()
+model.has_key('bust')
+
+set（集合）：
+data = set([1,2,3,3,4,54])
+data.add(1)
+data.remove(1)
+s1 = set([1, 2, 3,])
+s2 = set([2, 3, 4])
+s1 | s2 # 并集
+s1 & s2 # 交集
+s1 - s2 # 差集
+data = [1, 2, 3, 3, 3]
+set(data)  # 列表去重
+
+序列的操作：
+列表、字符串、元组都属于序列都可以进行切片操作
+切片操作：索引、分片、加、乘
+array = [1, 4, 9, 16, 25]
+data = [1,2,3]
+array[0]
+array[-1]
+array[-3:]
+array[:]
+array[2:4]
+len(array)
+array + data
+
+再议字符串拼接
+data = ['hello', ' ', 'sven'] 
+"".join(data)
