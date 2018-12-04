@@ -1,0 +1,26 @@
+日志的两个目的：
+诊断日志 记录与应用程序操作相关的日志。例如，用户遇到的报错信息， 可通过搜索诊断日志获得上下文信息。
+审计日志 为商业分析而记录的日志。从审计日志中，可提取用户的交易信息， 并结合其他用户资料构成用户报告或者用来优化商业目标。
+
+logging库采取了模块化的设计，提供了许多组件：记录器、处理器、过滤器和格式化器。
+Logger 暴露了应用程序代码能直接使用的接口。
+Handler将（记录器产生的）日志记录发送至合适的目的地。
+Filter提供了更好的粒度控制，它可以决定输出哪些日志记录。
+Formatter 指明了最终输出中日志记录的布局。
+
+import logging
+
+def get_logger(f_name='log.txt'):
+    logger = logging.getLogger(f_name)
+    logger.setLevel(logging.DEBUG)
+    fh = logging.FileHandler(f_name)
+    fh.setLevel(logging.DEBUG)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.WARN)
+    c_formatter = logging.Formatter("%(module)s.%(funcName)s:%(lineno)s - %(levelname)s - %(message)s")
+    f_formatter = logging.Formatter("%(asctime)s - %(module)s.%(funcName)s:%(lineno)s - %(levelname)s - %(message)s", '%m/%d/%Y %H:%M:%S')
+    ch.setFormatter(c_formatter)
+    fh.setFormatter(f_formatter)
+    logger.addHandler(ch)
+    logger.addHandler(fh)
+    return logger

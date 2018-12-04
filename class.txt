@@ -66,6 +66,13 @@ dir
 hasattr
 getattr
 
+
+python的对象分为可变对象和不可变对象。
+strings, tuples, 和numbers是不可更改的对象，而 list, dict, set 等则是可以修改的对象。
+可变类型本身有方法供修改对象，如 list.append() 和 list.pop。并且不会不会反悔新对象。
+不可变对象一经创建不会改变，一旦改变会返回一个新对象。
+
+
 property
 一些特殊的方法：
 __slots__

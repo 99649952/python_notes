@@ -1,3 +1,5 @@
+python常见的异常触发有系统自动触发的异常，自己主动触发的异常
+
 try和except子句
 try:
   int(raw_input("Please enter a number: "))
@@ -32,6 +34,9 @@ finally不管是否遇到异常总会执行,常用于起立操作，如关闭文
 
 主动触发异常
 raise NameError('HiThere')
+当assert后的语句不为True, 触发异常
+assert 1 == 2
+
 
 自定义异常类
 内建异常，就是python自己定义的异常，当內建异常不够用时，用户自定义异常，
