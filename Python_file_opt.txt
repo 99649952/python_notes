@@ -1,0 +1,26 @@
+文件读写：
+mode  opt    pointer    over  create
+r    读    start    false  false
+w    写    start    true  true
+a    追加  end      false  true
+r+    读写  start    true  false
+w+    读写  start    ture  true
+a+    读写  end      false  true
+rb、wb+等有b的操作，代表以二进制方式操作  
+
+读取文件：
+    read(): 一次读取文件的全部内容，返回一个str。
+    readline()：每次读取一行内容。
+    readlines()：一次读取所有内容并按行返回list。
+  
+close(): 方法关闭文件对象。
+write(str)：向文件中写入字符串。
+writelines(sequence)： 向文件中写入一个字符串序列。
+seek(offset[, whence])：设置文件的当前位置，offset为偏移的位置单位是字节，whence从哪开始（0开始位置，1，当前位置，2结尾），
+tell(): 返回文件的当前位置
+
+pickle
+cPickle
+json
+os.path
+shutil

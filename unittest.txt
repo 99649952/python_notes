@@ -1,0 +1,148 @@
+一、定义（copy自百度百科）：
+单元测试（unit testing），是指对软件中的最小可测试单元进行检查和验证。对于单元测试中单元的含义，一般来说，要根据实际情况去判定其具体含义，如C语言中单元指一个函数，Java里单元指一个类，图形化的软件中可以指一个窗口或一个菜单等。总的来说，单元就是人为规定的最小的被测功能模块。单元测试是在软件开发过程中要进行的最低级别的测试活动，软件的独立单元将在与程序的其他部分相隔离的情况下进行测试。
+
+二、为什么写单元测试：
+写测试的同时会对源码有更深的理解，毕竟读懂源码大体逻辑才能写测试（或别人告诉你代码的功能和返回值等）
+写测试有点浪费感情，没啥意思。没有写功能来的痛快。但是当你调整代码或代码重构的时候就明白没有测试的痛苦了。
+测试可以让问题更容易定位，一般的单元测试针对的是函数或方法这种小的代码块，不至于让你出问题时像无头的苍蝇。
+好处多多
+
+三、python的unittest模块的一些名词（官话读起来有些懵逼，可以大致看一下记住名词，照着示例先敲一下看看结果。）
+test fixture表示执行一个或多个测试所需的准备工作，以及任何关联清理操作。这可能涉及例如创建临时或代理数据库，目录或启动服务器进程。
+test case是单元测试的最小单位。它检查对特定输入集的特定响应。unittest 提供了一个基类， TestCase可用于创建新的测试用例。
+test suite是test cases，test suites或者两者的集合。它用于聚合应该一起执行的测试。
+test runner 是一个协调测试执行并向用户提供结果的组件。执行者可以使用图形界面，文本界面，或返回特殊值来指示执行测试的结果。
+
+四、下面是unittest模块的常用方法：（挑合适的用，也就几个常用）
+assertEqual(a, b)     a == b      
+assertNotEqual(a, b)     a != b      
+assertTrue(x)     bool(x) is True      
+assertFalse(x)     bool(x) is False      
+assertIs(a, b)     a is b     2.7
+assertIsNot(a, b)     a is not b     2.7
+assertIsNone(x)     x is None     2.7
+assertIsNotNone(x)     x is not None     2.7
+assertIn(a, b)     a in b     2.7
+assertNotIn(a, b)     a not in b     2.7
+assertIsInstance(a, b)     isinstance(a, b)     2.7
+assertNotIsInstance(a, b)     not isinstance(a, b)     2.7
+
+其他的unittest方法（）：
+assertAlmostEqual(a, b)     round(a-b, 7) == 0      
+assertNotAlmostEqual(a, b)     round(a-b, 7) != 0      
+assertGreater(a, b)     a > b     2.7
+assertGreaterEqual(a, b)     a >= b     2.7
+assertLess(a, b)     a < b     2.7
+assertLessEqual(a, b)     a <= b     2.7
+assertRegexpMatches(s, re)     regex.search(s)     2.7
+assertNotRegexpMatches(s, re)     not regex.search(s)     2.7
+assertItemsEqual(a, b)     sorted(a) == sorted(b) and works with unhashable objs     2.7
+assertDictContainsSubset(a, b)     all the key/value pairs in a exist in b     2.7
+assertMultiLineEqual(a, b)     strings     2.7
+assertSequenceEqual(a, b)     sequences     2.7
+assertListEqual(a, b)     lists     2.7
+assertTupleEqual(a, b)     tuples     2.7
+assertSetEqual(a, b)     sets or frozensets     2.7
+assertDictEqual(a, b)     dicts     2.7
+assertMultiLineEqual(a, b)     strings     2.7
+assertSequenceEqual(a, b)     sequences     2.7
+assertListEqual(a, b)     lists     2.7
+assertTupleEqual(a, b)     tuples     2.7
+assertSetEqual(a, b)     sets or frozensets     2.7
+assertDictEqual(a, b)     dicts     2.7
+
+五、test case单元测试的核心(copy自百度百科):
+输入数据及预期输出。输入数据是测试用例的核心，对输入数据的定义是：被测试函数所读取的外部数据及这些数据的初始值。外部数据是对于被测试函数来说的，实际上就是除了局部变量以外的其他数据，把这些数据分为几类：参数、成员变量、全局变量、IO媒体。IO媒体是指文件、数据库或其他储存或传输数据的媒体，例如，被测试函数要从文件或数据库读取数据，那么，文件或数据库中的原始数据也属于输入数据。一个函数无论多复杂，都无非是对这几类数据的读取、计算和写入。预期输出是指：返回值及被测试函数所写入的外部数据的结果值。返回值就不用说了，被测试函数进行了写操作的参数（输出参数）、成员变量、全局变量、IO媒体，它们的预期的结果值都是预期输出。一个测试用例，就是设定输入数据，运行被测试函数，然后判断实际输出是否符合预期。
+测试用例的核心是输入数据。选择有代表性的数据作为输入数据，主要有三种：正常输入，边界输入，非法输入。
+
+六、一波实例：
+1、基本使用
+（1）先拿python的一个内置函数坐下演示
+import unittest
+class TestCmp(unittest.TestCase):   # 写一个类然后继承TestCase类
+    def test_a_greater_b(self):	# 这是一个测试用例（test case).
+        self.assertEqual(1, cmp(10, 1))	# self.assertEqual是测试框架提供的方法，用于标胶两个值是否相等。
+
+    def test_a_less_b(self):
+        self.assertEqual(-1, cmp(1, 5))
+
+    def test_a_equal_b(self):
+        self.assertEqual(0, cmp(2, 2))
+
+if __name__ == '__main__':
+    unittest.main()
+
+执行：python scipy_name
+output：Ran 3 tests in 0.000s
+OK	
+There are three test cases, OK on behalf of all the test successfully.
+
+（2）自己写的一个功能函数
+被测试函数(功能：保证输入路径最终是目录。 如果路径存在但不是目录，可选择是否备份。)
+def ensure_dir(path, backup = True):
+    tmp = path
+    while True:
+        if os.path.lexists(tmp):
+            if not os.path.isdir(tmp) and backup:
+                bak = tmp + ".%s" % (int(time.time()))
+                logger.warning("Ensure '%s' as directory, '%s' exists and is not directory, about to rename it as '%s'" % (path, tmp, bak))
+                os.rename(tmp, bak)
+            elif not os.path.isdir(tmp):
+                logger.warning("Ensure '%s' as directory, '%s' exists and is not directory, about to remove" % (path, tmp))
+                os.remove(tmp)
+            break
+        else:
+            tmp = os.path.dirname(tmp)
+
+    if path and not os.path.exists(path):
+        logger.info("creating directory '%s'" % path)
+        os.makedirs(path)
+		
+import util
+import unittest
+import os
+import shutil
+
+
+class TestEnsureDir(unittest.TestCase):
+    TEST_BASE_DIR = "/tmp/unittest/"	# 测试文件的根目录
+    def setUp(self):
+        if not os.path.isdir(TestEnsureDir.TEST_BASE_DIR):
+            os.makedirs(TestEnsureDir.TEST_BASE_DIR)
+
+    def test_regular(self):
+        dir = os.path.join(TestEnsureDir.TEST_BASE_DIR, 'a/b/c')
+        util.EnsureDir(dir)
+        self.assertTrue(os.path.isdir)
+
+    def tearDown(self):
+        if os.path.isdir(TestEnsureDir.TEST_BASE_DIR):
+            shutil.rmtree(TestEnsureDir.TEST_BASE_DIR)
+
+
+if __name__ == "__main__":
+    unittest.main()
+单元测试中编写两个特殊的setUp()和tearDown()方法。这两个方法会分别在每调用一个测试方法的前后分别被执行。
+
+2进阶-mock
+官方：http://www.voidspace.org.uk/python/mock/index.html
+测试本身就是对当前函数或方法的测试。如果要测试的函数里包含的函数会连接数据库，或者发起http请求。你不想出发真实的操作，或者你纯粹就是不行调用这个函数。那这时候就用到mock模块了。
+（1）patch
+作用：找出模块里的一个函数用mock的对象替换掉
+解决问题：当被测试函数内部调用其他对象时，不想调用其他对象，用mock的对象替换掉其他对象
+
+from mock import patch
+import module
+@patch('module.ClassName2')
+@patch('module.ClassName1')
+def test(MockClass1, MockClass2):
+	pass
+	
+（2）MagicMock
+作用：模拟一个对象的返回值（可以是函数和方法）	
+from mock import MagicMock
+thing = ProductionClass()	# 被模拟的对象
+thing.method = MagicMock(return_value=3)
+
+3实战
+
