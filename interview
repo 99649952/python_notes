@@ -1,13 +1,33 @@
-python可变对象和不可变对象
-python中，strings, tuples, 和numbers是不可更改的对象，
-而 list, dict, set 等则是可以修改的对象。
+a = 1, b = a, a = 0, print(b)
+a = 1
+def fun(a):
+    a = 2
+fun(a)
+print(a)
+a = []
+def fun(a):
+    a.append(1)
+fun(a)
+print(a)
+所有的变量都可以理解是内存中一个对象的“引用”
+python中，strings, tuples, 和numbers是不可更改的对象，而 list, dict, set 等则是可以修改的对象。
 具体表现在不可变对象已经创建，对象不可更改，具体表现为对象本身没有对象外提供改变的方法。
-可变对象创建完成，可直接通过其本身的方法如list就有方法可供增删改查，str却没有。
+
+
+类变量和实例变量
+
+字典推导式
+kvs = {key: value for (key, value) in iterable}
+
 
 Python中单下划线和双下划线
 __xxx__()一种约定,Python内部的名字,用来区别其他用户自定义的命名,以防冲突，就是例如__init__(),__del__(),__call__()这些特殊方法
 _xxx:一种约定,用来指定变量私有.不能用from module import * 导入，其他方面和正常变量一样访问
 __xxx:表示变量私有不被继承，不能调用(其实能被调用)。
+
+
+迭代器和生成器
+
 
 *args and **kwargs有什么作用。常见应用场景。
 在不确定参数和关键字参数个数，不要为了自己写代码方便而滥用。
@@ -15,12 +35,50 @@ __xxx:表示变量私有不被继承，不能调用(其实能被调用)。
 易改（添加新的关键字参数不会破坏代码的其他部分）
 强烈推荐去使用看下requests源码
 
+
 面向切面编程AOP和装饰器
 装饰器是一个很著名的设计模式，经常被用于有切面需求的场景，较为经典的有插入日志、性能测试、事务处理等。
+
 
 __new__和__init__的区别
 __new__是一个静态方法,而__init__是一个实例方法.
 __new__方法会返回一个创建的实例,而__init__什么都不返回.
 只有在__new__返回一个cls的实例时后面的__init__才能被调用.
 当创建一个新实例时调用__new__,初始化一个实例时用__init__.
+
+
+单例模式
+class Singleton(object):
+    def __new__(cls, *args, **kw):
+        if not hasattr(cls, '_instance'):
+            orig = super(Singleton, cls)
+            cls._instance = orig.__new__(cls, *args, **kw)
+        return cls._instance
+
+
+线程和进程的应用场景
+
+
+协程的应用场景
+
+
+read,readline和readlines
+read 读取整个文件
+readline 读取下一行,使用生成器方法
+readlines 读取整个文件到一个迭代器以供我们遍历
+
+
+Python垃圾回收机制
+主要使用引用计数来跟踪和回收垃圾。
+在引用计数的基础上，通过“标记-清除”解决容器对象可能产生的循环引用问题，通过“分代回收”以空间换时间的方法提高垃圾回收效率。
+
+
+import copy
+a = [1, 2, 3, 4, ['a', 'b']]  #原始对象
+b = a  #赋值，传对象的引用
+c = copy.copy(a)  #对象拷贝，浅拷贝
+d = copy.deepcopy(a)  #对象拷贝，深拷贝
+a.append(5)  #修改对象a
+a[4].append('c')  #修改对象a中的['a', 'b']数组对象
+
 
