@@ -1,0 +1,25 @@
+api list
+desc		action		url
+add user	post		/api/account/signup
+
+error list
+desc_sum		desc						http code
+UserNotExist	The user does not exist.	404
+
+error response
+content-type: application/json
+status:404
+{'code': 'UserNotExist', 'message': 'The user does not exist.'}
+
+authorization
+Signature = base64(hmac-sha1(Secret+CONTENT-MD5+DATE)
+
+Sample
+RequestURL: /api/account/signup
+Method: POST
+Headers
+('Authorization', 'Key+Signature')
+
+Sample Response
+200 OK
+Content-Type: text/plain

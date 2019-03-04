@@ -1,45 +1,38 @@
-为遵守风格指南中的规定，模块名称要短、使用小写，并避免使用特殊符号，
-比如点(.) 和问号(?)。如 my.spam.py 这样的名字是必须不能用的！
-该方式命名将妨碍 Python的模块查找功能。
-就 my.spam.py 来说，Python 认为需要在 my 文件夹 中找到 spam.py 文件，实际并不是这样。
-这个例子 example 展示了点表示 法应该如何在Python文件中使用。
-如果愿意您可以将模块命名为 my_spam.py， 不过并不推荐在模块名中使用下划线。
-但是，在模块名称中使用其他字符（空格或连字号）
-将阻止导入（-是减法运算符），因此请尽量保持模块名称简单，以无需分开单词。
-最重要的是，不要使用下划线命名空间，而是使用子模块。
+模块名称
+要短、使用小写，并避免使用特殊符号。
+不推荐在模块名中使用下划线。
 
-module调用方式：
+模块（py文件）：
 import x
 from x import y
 from x import y as z
-包调用方式
+包（文件夹包含一个__init__.py的文件）
 from x.y import z
 import x.y.z
 
 内置模块：
-string
-re
-time
-datetime
-timeit
-random
 sys
 os
 os.path
+re
+time
+datetime
+logging
+subprocess
+commands
+json
+socket
+string
+random
 io
 shutil
 hmac
 pickle
-json
 csv
 md5
-subprocess
 argparse
 psutil
-json
-logging
 getpass
-
 
 第三方模块
 yaml
@@ -51,7 +44,6 @@ paramiko
 函数的本地命名空间
 模块的全局
 
-
 作用域 就是一个Python程序可以直接访问命名空间的文本区域。
 Local(innermost)包含局部变量，比如一个函数/方法内部。
 Enclosing包含了非局部(non-local)也非全局(non-global)的变量。比如两个嵌套函数，内层函数可能搜索外层函数的namespace。
@@ -59,11 +51,15 @@ Global(next-to-last)当前脚本的最外层，比如当前模块的全局变量
 Built-in(outtermost)Python builtin 模块。包含了内建的变量/关键字等。
 
 Python app目录结构：
-bin
-log
-docs
-src
-etc
-unittest
-functiontest
+README.rst
+LICENSE
+setup.py
+requirements.txt
+sample/__init__.py
+sample/core.py
+sample/helpers.py
+docs/conf.py
+docs/index.rst
+tests/test_basic.py
+tests/test_advanced.py
 

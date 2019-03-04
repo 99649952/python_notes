@@ -16,6 +16,7 @@ python中，strings, tuples, 和numbers是不可更改的对象，而 list, dict
 
 类变量和实例变量
 
+
 字典推导式
 kvs = {key: value for (key, value) in iterable}
 
@@ -55,6 +56,12 @@ class Singleton(object):
             cls._instance = orig.__new__(cls, *args, **kw)
         return cls._instance
 
+    闭包
+当一个内嵌函数引用其外部作作用域的变量,我们就会得到一个闭包. 总结一下,创建一个闭包必须满足以下几点:
+必须有一个内嵌函数
+内嵌函数必须引用外部函数中的变量
+外部函数的返回值必须是内嵌函数
+
 
 线程和进程的应用场景
 
@@ -80,5 +87,90 @@ c = copy.copy(a)  #对象拷贝，浅拷贝
 d = copy.deepcopy(a)  #对象拷贝，深拷贝
 a.append(5)  #修改对象a
 a[4].append('c')  #修改对象a中的['a', 'b']数组对象
+
+
+三元运算
+[on true] if [expression] else [on false]
+
+
+在Python中，我们有7种运算符：
+算术运算符、关系运算符、赋值运算符、逻辑运算符、位运算符、成员运算符、身份运算符。
+7个算术运算符+ - * / // % **
+关系运算符用于比较两个值< > <= >= == !=
+赋值运算符= += -= *= /= //= %= **=
+逻辑运算符and or not
+成员运算符in not in
+身份运算符 is
+位运算符& | ^ ~ << >>
+
+
+Python中如何使用多进制数字
+前缀0b 或 0B 前缀表示二进制数。用bin()函数将一个数字转换为它的二进制形式。
+前缀 0o 或 0O 表示 8 进制数。用oct()
+前缀 0x 或者 0X 表示 16 进制数。用hex()
+
+
+Ajax
+AJAX 在不重新加载整个页面的情况下，与服务器交换数据并更新部分网页的技术。
+
+
+对tcp/ip协议的理解
+
+
+对socket协议的理解
+
+
+对http协议的理解
+HTTP/0.9 规定服务端只能回应html格式的字符串 只有GET
+HTTP/1.0 任何格式的内容都可以传送 添加POST HEAD
+    请求和响应的格式变化，包含数据和头部信息
+    增加状态码、缓存、认证、内容编码、多字符集、多部分发送等。
+HTTP/1.1 最大变化引入持久连接，大多数浏览器允许同时建立6个持久连接。
+    增加PUT、PATCH、OPTIONS、DELETE
+    增加Connection、Host等字段
+
+
+使用Python实现单例模式
+
+
+read,readline和readlines
+read 读取整个文件
+readline 读取下一行,使用生成器方法
+readlines 读取整个文件到一个迭代器以供我们遍历
+
+
+Python的is
+is是对比地址,==是对比值
+
+
+Python里的拷贝
+
+
+函数：filter、map、reduce和lambda
+
+
+Python中的作用域
+Python 中，一个变量的作用域总是由在代码中被赋值的地方所决定的。
+本地作用域（Local）→当前作用域被嵌入的本地作用域（Enclosing locals）→全局/模块作用域（Global）→内置作用域（Built-in）
+
+
+Python匹配HTML tag的时候，<.*>和<.*?>有什么区别
+
+
+在网络的领域内，单工、半双工、全双工是经常会遇见的名称，下面简单的讲述一下他们的区别。
+    单工：简单的说就是一方只能发信息，另一方则只能收信息，通信是单向的。
+    半双工：比单工先进一点，就是双方都能发信息，但同一时间则只能一方发信息。
+    全双工：比半双工再先进一点，就是双方不仅都能发信息，而且能够同时发送。
+
+
+多线程、多进程、协程、异步编程、I/O多路复用
+
+
+实例方法,类方法,静态方法
+
+
+排序
+a = [{'name':'a','age':20},{'name':'b','age':30},{'name':'c','age':25}]
+a.sort(key=lambda x: x["age"], reverse=True)
 
 
